@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ```
 ```
 #
@@ -34,3 +35,6 @@ After editing the new config file we can run the component:
 ```mycomponent ```
 
     --Ice.Config=config
+=======
+# Robotica2015
+>>>>>>> 1ed976970d9ab1f03f05454f291e35870fb49d05
