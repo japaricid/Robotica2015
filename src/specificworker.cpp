@@ -47,31 +47,27 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute( )
 {
-    const float threshold = 400; //millimeters
-    float rot = 0.3;  //rads per second
-    static bool giro=true;
-    float x=500;
-    float Vgiro,Vavance;
-    static float B = (M_PI/4)/log(0.3);
-    static float C = 1/log(0.5);
-    
+  const float threshold = 450; //millimeters
+  float rot = 0.9;  //rads per second
+  const int offset = 5;
+  int v;
+  static float B=-(M_PI/4*M_PI/4)/log(0.3);
+  static float C=1/log(0.5);
     try
     {
         RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();  //read laser data 
-        std::sort( ldata.begin()+20, ldata.end()-20, [](RoboCompLaser::TData a, RoboCompLaser::TData b){ return  a.dist < b.dist; }) ;  //sort laser data from small to large distances using a lambda function.
-
-        
-        
-        
-        float  angle = ldata.front().angle;
-	float d = ((ldata.data()+20)->dist)/1000.f;
-	Vavance = ldata.front().dist * 0.5;
-	if(Vavance>500)
-	  Vavance = 500;
-	Vgiro = exp(-(angle*angle)/B)*exp(-d*d*C);
-	
-        
-        differentialrobot_proxy->setSpeedBase(Vavance, Vgiro);
+        std::sort( ldata.begin()+offset, ldata.end()-offset, [](RoboCompLaser::TData a, RoboCompLaser::TData b){ return     a.dist < b.dist; }) ;  //sort laser data from small to large distances using a lambda function.
+    
+    float angle=(ldata.data()+offset)->angle;
+    float dist=(ldata.data()+offset)->dist;
+    
+    v=0.5*dist;
+    if(v>500)  v=500;
+    
+    rot=exp(-(angle*angle)/B)/(dist/500);
+    differentialrobot_proxy->setSpeedBase(v, rot);
+    qDebug()<<v<<rot;
+    }
         
     
     }
