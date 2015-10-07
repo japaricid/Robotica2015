@@ -47,16 +47,25 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute( )
 {
-  const float threshold = 450; //millimeters
+    const float threshold = 650; //millimeters
   float rot = 0.9;  //rads per second
-  const int offset = 5;
+  const int offset = 20;
   int v;
   static float B=-(M_PI/4*M_PI/4)/log(0.3);
   static float C=1/log(0.5);
+  bool giro =false;
+  
     try
     {
         RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();  //read laser data 
         std::sort( ldata.begin()+offset, ldata.end()-offset, [](RoboCompLaser::TData a, RoboCompLaser::TData b){ return     a.dist < b.dist; }) ;  //sort laser data from small to large distances using a lambda function.
+   
+    if((ldata.data()+offset)->angle>0){
+	giro=false;
+      }else{
+	giro=true;
+      }
+    
     
     float angle=(ldata.data()+offset)->angle;
     float dist=(ldata.data()+offset)->dist;
@@ -65,13 +74,16 @@ void SpecificWorker::compute( )
     if(v>500)  v=500;
     
     rot=exp(-(angle*angle)/B)/(dist/500);
-    differentialrobot_proxy->setSpeedBase(v, rot);
+    if(giro){
+      differentialrobot_proxy->setSpeedBase(v, rot);
+    }else{
+      differentialrobot_proxy->setSpeedBase(v, -rot);
+    }
     qDebug()<<v<<rot;
-    }
+   
         
-    
     }
-    catch(const Ice::Exception &ex)
+      catch(const Ice::Exception &ex)
     {
         std::cout << ex << std::endl;
     }
