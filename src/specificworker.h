@@ -33,6 +33,7 @@
 
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
+#include <qt4/QtCore/qmap.h>
 
 class SpecificWorker : public GenericWorker
 {
@@ -41,13 +42,49 @@ public:
 	SpecificWorker(MapPrx& mprx);	
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
+	void newAprilTag(const tagsList &tags);
+	void Move();
 
 
 public slots:
-	void compute(); 	
+	void compute();
+	
 
 private:
+      struct MarksList{
+	typedef struct {
+	  int id;
+	  float tx;
+	  float ty;
+	  float tz;
+	  float rx;
+	  float ry;
+	  float rz;
+	}Mark;
 	
+	
+	QMap<int,Mark> mapa;
+	QMutex mutex;
+	
+	
+	void add(const RoboCompAprilTags::tag &t)
+	{
+	  Mark marca;
+	  marca.id = t.id;
+	  marca.rx = t.rx;
+	  marca.ry = t.ry;
+	  marca.rz = t.rz;
+	  marca.tx = t.tx;
+	  marca.ty = t.ty;
+	  marca.tz = t.tz;
+	  mapa.insert(t.id,marca);
+	};
+	Mark get(){};
+      };
+   
+    MarksList MarkList;
+    
+    
 };
 
 #endif
