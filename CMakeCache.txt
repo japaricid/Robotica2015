@@ -169,10 +169,10 @@ CMAKE_USE_RELATIVE_PATHS:BOOL=OFF
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
-Project_BINARY_DIR:STATIC=/home/salabeta/myComponent
+Project_BINARY_DIR:STATIC=/home/salabeta/Robotica2015
 
 //Value Computed by CMake
-Project_SOURCE_DIR:STATIC=/home/salabeta/myComponent
+Project_SOURCE_DIR:STATIC=/home/salabeta/Robotica2015
 
 //Path to a library.
 QT_ARTHURPLUGIN_PLUGIN_DEBUG:FILEPATH=QT_ARTHURPLUGIN_PLUGIN_DEBUG-NOTFOUND

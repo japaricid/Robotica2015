@@ -47,16 +47,70 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute( )
 {
-  MarksList::Mark marca = MarkList.get();
 
-  switch (marca.id){
-    case 0:
-      break;
-    default:
-      Move();
-      break;
+  
+    //Move();
+   std::cout << "compute" << std::endl;
     
+    switch( estado )
+    {
+      case State::INIT:
+	std::cout << "INIT" << std::endl;
+	estado = State::SEARCH;
+	break;
+      case State::SEARCH:
+	std::cout << "SEARCH" << std::endl;
+	Buscar(initId);
+	break;
+      case State::MOVE:
+
+	  Move();
+	break;
+      case State::FINISH:	
+	std::cout << "FINISH" << std::endl;
+	break;
+    } 
+    
+}
+
+void SpecificWorker::Buscar(int initId)
+{
+  std::cout << "buscando" <<initId<< std::endl;
+  
+
+  
+
+  static bool firstTime=true;
+  if(MarkList.existe(initId))
+  {
+    try
+    {
+      differentialrobot_proxy->setSpeedBase(0,0);
+    }
+    catch(const Ice::Exception e){
+      std::cout << e << std::endl;
+    }
+ 
+    estado = State::MOVE;
+    firstTime=true;
+    
+    return;
   }
+  
+  if(firstTime)
+  {
+    try
+    {
+	differentialrobot_proxy->setSpeedBase(0, 0.5);
+      
+
+    }
+    catch(const Ice::Exception e){
+      std::cout << e << std::endl;
+    }
+    firstTime=false;
+   }
+  
 }
 
 
@@ -81,10 +135,36 @@ void SpecificWorker::Move()
 
   bool giro =false;
   
+  
+      if(MarkList.existe(initId))
+    {
+      if(MarkList.distancia(initId)<0.8)
+      {
+	//parar robot
+	differentialrobot_proxy->setSpeedBase(0,0);
+	//std::cout << "buscando" <<initId<< std::endl;
+	//qFatal("encontrado");
+	estado = State::SEARCH;
+	initId = (initId + 1) % 4;
+	return;
+      }
+    }
+    else
+    {
+      estado = State::SEARCH;
+
+      return;
+    }
+    
+  
+  
+
+  
     try
     {
     RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();  //read laser data 
     std::sort( ldata.begin()+offset, ldata.end()-offset, [](RoboCompLaser::TData a, RoboCompLaser::TData b){ return     a.dist < b.dist; }) ;  //sort laser data from small to large distances using a lambda function.
+   
    
     if((ldata.data()+offset)->angle>0){
 	giro=false;
@@ -105,7 +185,7 @@ void SpecificWorker::Move()
     }else{
       differentialrobot_proxy->setSpeedBase(v, -rot);
     }
-    qDebug()<<v<<rot;
+   // qDebug()<<v<<rot;
    
         
     }

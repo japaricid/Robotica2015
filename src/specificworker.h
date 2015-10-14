@@ -43,11 +43,12 @@ public:
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
 	void newAprilTag(const tagsList &tags);
-	void Move();
 
 
 public slots:
 	void compute();
+	void Move();
+	void Buscar(int initId);
 	
 
 private:
@@ -60,6 +61,7 @@ private:
 	  float rx;
 	  float ry;
 	  float rz;
+	  QTime clock;
 	}Mark;
 	
 	
@@ -69,6 +71,7 @@ private:
 	
 	void add(const RoboCompAprilTags::tag &t)
 	{
+	  QMutexLocker ml(&mutex);
 	  Mark marca;
 	  marca.id = t.id;
 	  marca.rx = t.rx;
@@ -77,13 +80,44 @@ private:
 	  marca.tx = t.tx;
 	  marca.ty = t.ty;
 	  marca.tz = t.tz;
+	  marca.clock=QTime::currentTime();
 	  mapa.insert(t.id,marca);
 	};
-	Mark get(){};
+	
+	 Mark get(int id){
+	  QMutexLocker ml(&mutex);
+	  return mapa.value(id);
+	};
+	
+	bool existe(int id){
+	  QMutexLocker ml(&mutex);
+	  borraMarca(id);
+	  return mapa.contains(id);
+	};
+	
+	float distancia(int initId)
+	{
+	
+
+	  Mark m = get(initId);
+	   std::cout << m.tx <<" "<<m.tz<< std::endl;
+	  QMutexLocker ml(&mutex);
+	  float d = sqrt(pow(m.tx,2) + pow(m.tz,2));
+	  return d;
+	};
+	void borraMarca(int id)
+	{
+	  if(mapa.value(id).clock.elapsed()>300)
+	    mapa.remove(id);
+	};
       };
    
     MarksList MarkList;
     
+    
+    enum class State {INIT, MOVE, SEARCH, FINISH};
+    State estado = State::INIT;
+    int initId = 0;
     
 };
 
