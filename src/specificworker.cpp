@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2015 by YOUR NAME HERE
+ *    Copyright (C) 2015 by CHIFRI Y CIU
  *
  *    This file is part of RoboComp
  *
@@ -21,23 +21,34 @@
 /**
 * \brief Default constructor
 */
+
+///*=================================================================================================================================================0
+#include "specificworker.h"
+
+/**
+* \brief Default constructor
+*/
+///*=========================================================================================
 SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 {
-
+  inner = new InnerModel ("/home/salabeta/robocomp/files/innermodel/simpleworld.xml");
+  MarkList = new MarksList(inner);
 }
 
 /**
 * \brief Default destructor
 */
+
+
+
 SpecificWorker::~SpecificWorker()
 {
+
 	
 }
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
-
-
 
 	
 	timer.start(Period);
@@ -47,11 +58,13 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute( )
 {
+   TBaseState bState;  
+   differentialrobot_proxy -> getBaseState(bState);
+   inner-> updateTransformValues("base",bState.x, 0, bState.z,0,bState.alpha,0);
 
   
-    //Move();
-   std::cout << "compute" << std::endl;
-    
+    ldata = laser_proxy->getLaserData();  
+   
     switch( estado )
     {
       case State::INIT:
@@ -60,12 +73,20 @@ void SpecificWorker::compute( )
 	break;
       case State::SEARCH:
 	std::cout << "SEARCH" << std::endl;
-	Buscar(initId);
+	Buscar(MarkList->initMark);
 	break;
       case State::MOVE:
-
+	  std::cout << "MOVE" << std::endl;
 	  Move();
 	break;
+	  case State::WALL:
+	std::cout << "WALL" << std::endl;
+	  wall();
+	break;
+	case State::WAIT:
+	std::cout << "WAIT" << std::endl;
+	  wait();
+	  break;
       case State::FINISH:	
 	std::cout << "FINISH" << std::endl;
 	break;
@@ -73,15 +94,12 @@ void SpecificWorker::compute( )
     
 }
 
-void SpecificWorker::Buscar(int initId)
+void SpecificWorker::Buscar(int initMark)
 {
-  std::cout << "buscando" <<initId<< std::endl;
-  
-
-  
-
+  std::cout << "buscando" <<initMark<< std::endl;
+   
   static bool firstTime=true;
-  if(MarkList.existe(initId))
+  if(MarkList->existe(initMark))
   {
     try
     {
@@ -113,13 +131,27 @@ void SpecificWorker::Buscar(int initId)
   
 }
 
-
+void SpecificWorker::wait()
+{
+  static bool primeraVez=true;
+  static QTime reloj;
+  if(primeraVez){
+    reloj = QTime::currentTime();
+    primeraVez=false;
+    MarkList->inMemory=false;
+  }
+  if(reloj.elapsed() > 5000){
+    estado = State::SEARCH;
+    primeraVez=true;
+    return;
+  } 
+}
 
 
 void SpecificWorker::newAprilTag(const tagsList& tags)
 {
   for (auto t : tags){
-    MarkList.add(t);
+    MarkList->add(t);
     qDebug() << t.id;
   }
 
@@ -128,24 +160,27 @@ void SpecificWorker::newAprilTag(const tagsList& tags)
 void SpecificWorker::Move()
 {
 //const float threshold = 650; //millimeters
-  float rot = 0.9;  //rads per second
+  //float rot = 0.9;  //rads per second
   const int offset = 20;
-  int v;
-  static float B=-(M_PI/4*M_PI/4)/log(0.3);
+ // int v;
+  //static float B=-(M_PI/4*M_PI/4)/log(0.3);
 
   bool giro =false;
   
-  
-      if(MarkList.existe(initId))
+   float distance= MarkList->distancia(MarkList->initMark);
+      if(MarkList->existe(MarkList->initMark))
     {
-      if(MarkList.distancia(initId)<0.8)
+      
+      if(distance<400)
+	
       {
 	//parar robot
 	differentialrobot_proxy->setSpeedBase(0,0);
 	//std::cout << "buscando" <<initId<< std::endl;
 	//qFatal("encontrado");
-	estado = State::SEARCH;
-	initId = (initId + 1) % 4;
+	
+	MarkList->initMark = (MarkList->initMark + 1) % 4;
+	estado = State::WAIT;
 	return;
       }
     }
@@ -155,37 +190,45 @@ void SpecificWorker::Move()
 
       return;
     }
-    
-  
-  
-
   
     try
     {
-    RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();  //read laser data 
+      
+    //RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();  //read laser data 
     std::sort( ldata.begin()+offset, ldata.end()-offset, [](RoboCompLaser::TData a, RoboCompLaser::TData b){ return     a.dist < b.dist; }) ;  //sort laser data from small to large distances using a lambda function.
    
    
-    if((ldata.data()+offset)->angle>0){
-	giro=false;
-      }else{
-	giro=true;
-      }
+//     if((ldata.data()+offset)->angle>0){
+// 	giro=false;
+//       }else{
+// 	giro=true;
+//       }
     
     
     float angle=(ldata.data()+offset)->angle;
     float dist=(ldata.data()+offset)->dist;
     
-    v=0.5*dist;
-    if(v>500)  v=500;
-    
-    rot=exp(-(angle*angle)/B)/(dist/500);
-    if(giro){
-      differentialrobot_proxy->setSpeedBase(v, rot);
-    }else{
-      differentialrobot_proxy->setSpeedBase(v, -rot);
+    if(dist<450)
+    {   
+	estado = State::WALL;
+	return;
     }
-   // qDebug()<<v<<rot;
+    else{
+        float tx= MarkList->get(MarkList->initMark).tx;
+	float tz= MarkList->get(MarkList->initMark).tz;
+	float r= atan2(tx, tz);
+	differentialrobot_proxy->setSpeedBase(150, 0.4*r);
+    }
+//     v=0.5*dist;
+//     if(v>500)  v=500;
+//     
+//     rot=exp(-(angle*angle)/B)/(dist/500);
+//     if(giro){
+//       differentialrobot_proxy->setSpeedBase(v, rot);
+//     }else{
+//       differentialrobot_proxy->setSpeedBase(v, -rot);
+//     }
+//    // qDebug()<<v<<rot;
    
         
     }
@@ -195,6 +238,26 @@ void SpecificWorker::Move()
     }
 }
 
+void SpecificWorker::wall()
+{
+    std::cout << "WALL" << std::endl;
+    RoboCompLaser::TLaserData ldataCopy = ldata;
+    int l = ldataCopy.size();
+    float rot;
+    const int offset = 30;
+   
+    std::sort( ldataCopy.begin()+offset, ldataCopy.end()-offset, [](RoboCompLaser::TData a, RoboCompLaser::TData b){ return     a.dist < b.dist; }) ;  //sort laser data from small to large distances using a lambda function.
+    //std::sort( ldataCopy.begin()+l/2, ldataCopy.end()-5, [](RoboCompLaser::TData a, RoboCompLaser::TData b){ return     a.dist < b.dist; }) ;
+    
+    if((ldataCopy.data() + offset )->dist > 400)
+    {
+      estado = State::MOVE;
+      return;
+    }
+    
+      differentialrobot_proxy->setSpeedBase(50, -0.3);                  
+      usleep(1000000);
+}
 /*
    if( (ldata.data()+20)->dist < threshold)
     {

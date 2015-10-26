@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2015 by YOUR NAME HERE
+ *    Copyright (C) 2015 by CHIFRI Y CIU
  *
  *    This file is part of RoboComp
  *
@@ -23,11 +23,6 @@
 */
 
 
-
-
-
-
-
 #ifndef SPECIFICWORKER_H
 #define SPECIFICWORKER_H
 
@@ -49,10 +44,17 @@ public slots:
 	void compute();
 	void Move();
 	void Buscar(int initId);
-	
+	void wait();
+	void wall();
 
 private:
+      
+ 
       struct MarksList{
+	MarksList(InnerModel *inner_) : inner(inner_){
+	  inMemory=false;
+	  initMark=0;
+	};
 	typedef struct {
 	  int id;
 	  float tx;
@@ -67,44 +69,65 @@ private:
 	
 	QMap<int,Mark> mapa;
 	QMutex mutex;
-	
+	QVec memory;
+	InnerModel *inner;
+	bool inMemory;	
+	int initMark;
 	
 	void add(const RoboCompAprilTags::tag &t)
 	{
+
 	  QMutexLocker ml(&mutex);
 	  Mark marca;
+	
 	  marca.id = t.id;
 	  marca.rx = t.rx;
 	  marca.ry = t.ry;
 	  marca.rz = t.rz;
-	  marca.tx = t.tx;
-	  marca.ty = t.ty;
-	  marca.tz = t.tz;
+	  marca.tx = t.tx*1000;
+	  marca.ty = t.ty*1000;
+	  marca.tz = t.tz*1000;
 	  marca.clock=QTime::currentTime();
 	  mapa.insert(t.id,marca);
+	  memory = inner -> transform("world",QVec::vec3(marca.tx,0,marca.tz),"rgbd");
+	  inMemory=true;
+	  
 	};
 	
 	 Mark get(int id){
 	  QMutexLocker ml(&mutex);
-	  return mapa.value(id);
+	  if (mapa.contains(id)){
+	    return mapa.value(id);
+	  }else{
+	    Mark m;
+	   QVec reality= inner ->transform("rgbd",memory,"world");
+	    m.id=id;
+	    m.tx=reality.x();
+	    m.ty=reality.y();
+	    m.tz=reality.z();
+	    return m; 
+	  }
+	  
 	};
 	
 	bool existe(int id){
 	  QMutexLocker ml(&mutex);
 	  borraMarca(id);
-	  return mapa.contains(id);
+	  return mapa.contains(id) or inMemory;
 	};
 	
-	float distancia(int initId)
+	float distancia(int initId) 
 	{
 	
 
 	  Mark m = get(initId);
 	   std::cout << m.tx <<" "<<m.tz<< std::endl;
 	  QMutexLocker ml(&mutex);
+	  borraMarca(initMark);
 	  float d = sqrt(pow(m.tx,2) + pow(m.tz,2));
 	  return d;
 	};
+	
 	void borraMarca(int id)
 	{
 	  if(mapa.value(id).clock.elapsed()>300)
@@ -112,12 +135,16 @@ private:
 	};
       };
    
-    MarksList MarkList;
+    MarksList* MarkList;
     
     
-    enum class State {INIT, MOVE, SEARCH, FINISH};
+    enum class State {INIT, MOVE, SEARCH, FINISH, WAIT, WALL};
     State estado = State::INIT;
     int initId = 0;
+    TLaserData ldata;
+ 
+    InnerModel* inner;
+  
     
 };
 
