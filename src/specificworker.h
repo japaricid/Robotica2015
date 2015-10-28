@@ -43,7 +43,7 @@ public:
 public slots:
 	void compute();
 	void Move();
-	void Buscar(int initId);
+	void Buscar(int initMark);
 	void wait();
 	void wall();
 
@@ -89,8 +89,10 @@ private:
 	  marca.tz = t.tz*1000;
 	  marca.clock=QTime::currentTime();
 	  mapa.insert(t.id,marca);
-	  memory = inner -> transform("world",QVec::vec3(marca.tx,0,marca.tz),"rgbd");
-	  inMemory=true;
+	  if(initMark == marca.id){
+	    memory = inner -> transform("world",QVec::vec3(marca.tx,0,marca.tz),"rgbd");
+	    inMemory=true;
+	  }
 	  
 	};
 	
@@ -116,11 +118,11 @@ private:
 	  return mapa.contains(id) or inMemory;
 	};
 	
-	float distancia(int initId) 
+	float distancia(int initMark) 
 	{
 	
 
-	  Mark m = get(initId);
+	  Mark m = get(initMark);
 	   std::cout << m.tx <<" "<<m.tz<< std::endl;
 	  QMutexLocker ml(&mutex);
 	  borraMarca(initMark);
@@ -140,7 +142,7 @@ private:
     
     enum class State {INIT, MOVE, SEARCH, FINISH, WAIT, WALL};
     State estado = State::INIT;
-    int initId = 0;
+   // int initId = 0;
     TLaserData ldata;
  
     InnerModel* inner;

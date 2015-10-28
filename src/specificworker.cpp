@@ -255,7 +255,7 @@ void SpecificWorker::wall()
       return;
     }
     
-      differentialrobot_proxy->setSpeedBase(50, -0.3);                  
+      differentialrobot_proxy->setSpeedBase(40, -0.4);                  
       usleep(1000000);
 }
 /*
