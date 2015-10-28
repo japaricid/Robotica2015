@@ -32,7 +32,7 @@
 SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 {
   inner = new InnerModel ("/home/salabeta/robocomp/files/innermodel/simpleworld.xml");
-  MarkList = new TagsList(inner);
+  MarkList = new TagList(inner);
 }
 
 /**
@@ -42,17 +42,12 @@ SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 
 
 SpecificWorker::~SpecificWorker()
-{
-
-	
+{	
 }
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
-{
-
-	
+{	
 	timer.start(Period);
-
 	return true;
 }
 
@@ -62,9 +57,11 @@ void SpecificWorker::compute( )
    differentialrobot_proxy -> getBaseState(bState);
    inner-> updateTransformValues("base",bState.x, 0, bState.z,0,bState.alpha,0);
 
-  
     ldata = laser_proxy->getLaserData();  
    
+    TargetPose t;
+  controller_proxy->go(t);
+    
     switch( estado )
     {
       case State::INIT:
@@ -94,21 +91,24 @@ void SpecificWorker::compute( )
     
 }
 
+
 void SpecificWorker::Buscar(int initMark)
 {
   std::cout << "buscando" <<initMark<< std::endl;
    
   static bool firstTime=true;
   if(MarkList->existe(initMark))
-  {
+  {  
     try
     {
+
+   qDebug() << "hoal";
+
       differentialrobot_proxy->setSpeedBase(0,0);
     }
     catch(const Ice::Exception e){
       std::cout << e << std::endl;
     }
- 
     estado = State::MOVE;
     firstTime=true;
     

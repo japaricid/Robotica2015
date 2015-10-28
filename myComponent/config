@@ -6,6 +6,7 @@ AprilTagsTopic.Endpoints=tcp -p 14999
 # Proxies for required interfaces
 DifferentialRobotProxy = differentialrobot:tcp -h localhost -p 10004
 LaserProxy = laser:tcp -h localhost -p 10003
+ControllerProxy = controller:tcp -h localhost -p 10050
 
 
 # This property is used by the clients to connect to IceStorm.

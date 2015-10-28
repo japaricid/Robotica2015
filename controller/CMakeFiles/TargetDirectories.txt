@@ -1,0 +1,1 @@
+/home/salabeta/Robotica2015/controller/src/CMakeFiles/Controller.dir

@@ -29,8 +29,7 @@
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
 #include <qt4/QtCore/qmap.h>
-
-#include "TagsList.h"
+#include "taglist.h"
 
 
 class SpecificWorker : public GenericWorker
@@ -51,103 +50,12 @@ public slots:
 	void wall();
 
 private:
-      
- /*
-      struct MarksList{
-	MarksList(InnerModel *inner_) : inner(inner_){
-	  inMemory=false;
-	  initMark=0;
-	};
-	typedef struct {
-	  int id;
-	  float tx;
-	  float ty;
-	  float tz;
-	  float rx;
-	  float ry;
-	  float rz;
-	  QTime clock;
-	}Mark;
-	
-	
-	QMap<int,Mark> mapa;
-	QMutex mutex;
-	QVec memory;
-	InnerModel *inner;
-	bool inMemory;	
-	int initMark;
-	
-	void add(const RoboCompAprilTags::tag &t)
-	{
-
-	  QMutexLocker ml(&mutex);
-	  Mark marca;
-	
-	  marca.id = t.id;
-	  marca.rx = t.rx;
-	  marca.ry = t.ry;
-	  marca.rz = t.rz;
-	  marca.tx = t.tx*1000;
-	  marca.ty = t.ty*1000;
-	  marca.tz = t.tz*1000;
-	  marca.clock=QTime::currentTime();
-	  mapa.insert(t.id,marca);
-	  if(initMark == marca.id){
-	    memory = inner -> transform("world",QVec::vec3(marca.tx,0,marca.tz),"rgbd");
-	    inMemory=true;
-	  }
-	  
-	};
-	
-	 Mark get(int id){
-	  QMutexLocker ml(&mutex);
-	  if (mapa.contains(id)){
-	    return mapa.value(id);
-	  }else{
-	    Mark m;
-	   QVec reality= inner ->transform("rgbd",memory,"world");
-	    m.id=id;
-	    m.tx=reality.x();
-	    m.ty=reality.y();
-	    m.tz=reality.z();
-	    return m; 
-	  }
-	  
-	};
-	
-	bool existe(int id){
-	  QMutexLocker ml(&mutex);
-	  borraMarca(id);
-	  return mapa.contains(id) or inMemory;
-	};
-	
-	float distancia(int initMark) 
-	{
-	
-
-	  Mark m = get(initMark);
-	   std::cout << m.tx <<" "<<m.tz<< std::endl;
-	  QMutexLocker ml(&mutex);
-	  borraMarca(initMark);
-	  float d = sqrt(pow(m.tx,2) + pow(m.tz,2));
-	  return d;
-	};
-	
-	void borraMarca(int id)
-	{
-	  if(mapa.value(id).clock.elapsed()>300)
-	    mapa.remove(id);
-	};
-      };*/
+  
+    TagList *MarkList;
    
-    TagsList* MarkList;
-    
-    
     enum class State {INIT, MOVE, SEARCH, FINISH, WAIT, WALL};
     State estado = State::INIT;
-   // int initId = 0;
     TLaserData ldata;
- 
     InnerModel* inner;
   
     
