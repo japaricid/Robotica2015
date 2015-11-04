@@ -48,12 +48,13 @@ public slots:
 	void Buscar(int initMark);
 	void wait();
 	void wall();
+	void controller();
 
 private:
   
     TagList *MarkList;
    
-    enum class State {INIT, MOVE, SEARCH, FINISH, WAIT, WALL};
+    enum class State {INIT, MOVE, SEARCH, FINISH, WAIT, WALL, CONTROLLER};
     State estado = State::INIT;
     TLaserData ldata;
     InnerModel* inner;

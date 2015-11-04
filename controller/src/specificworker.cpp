@@ -23,7 +23,10 @@
 */
 SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 {
-
+   inner = new InnerModel("/home/salabeta/robocomp/files/innermodel/simpleworld.xml");
+   state.state="IDLE";
+  
+ 
 }
 
 /**
@@ -31,7 +34,8 @@ SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 */
 SpecificWorker::~SpecificWorker()
 {
-	
+ 
+
 }
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
@@ -47,27 +51,161 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute()
 {
-// 	try
-// 	{
-// 		camera_proxy->getYImage(0,img, cState, bState);
-// 		memcpy(image_gray.data, &img[0], m_width*m_height*sizeof(uchar));
-// 		searchTags(image_gray);
-// 	}
-// 	catch(const Ice::Exception &e)
-// 	{
-// 		std::cout << "Error reading from Camera" << e << std::endl;
-// 	}
+ 
+  try
+  {
+     differentialrobot_proxy->getBaseState(bState);
+     ldata = laser_proxy->getLaserData();
+     inner->updateTransformValues("base", bState.x, 0, bState.z, 0, bState.alpha, 0);	//actualiza los valores del robot en el arbol de memoria
+     
+     if( state.state == "WORKING")
+     {
+	if( heLlegado() )
+	{ qDebug()<<"he llegado";
+	  differentialrobot_proxy->setSpeedBase(0,0);
+	  state.state = "FINISH";
+	  return;
+	}
+      
+       else if(hayCamino())
+       {
+	   irATarget(); 
+       }
+       else if(ctarget.subtarget == true)
+       {
+	  irASubTarget(); 
+       }
+       else
+       {
+	 crearSubTarget();
+       }
+    }
+  }
+  catch(const Ice::Exception &e)
+  {
+    std::cout << "Error reading from Camera" << e << std::endl;
+  }
+}
+
+void SpecificWorker::irASubTarget()
+{
+  qDebug()<<"ir Target";  
+    QVec t = inner->transform("rgbd", ctarget.subtarget, "world");
+    float alpha =atan2(t.x(), t.z());
+    float r= 0.3*alpha;
+    float d = t.norm2();
+    if(d<100)
+    {
+      ctarget.activeSub=false;
+    }else
+    {
+      if(d>400)d=400;
+	differentialrobot_proxy->setSpeedBase(d,r);
+    }
 }
 
 
+void SpecificWorker::crearSubTarget()
+{
+  qDebug()<<"creando Target";
+   uint i;
+  float dt;
+  QVec t = inner->transform("rgbd", ctarget.target, "world");
+  float d = t.norm2();
+  float alpha =atan2(t.x(), t.z() );
+  
+  for(i = 0; i<ldata.size(); i++)
+  {
+      if(ldata[i].angle >= alpha)
+      {
+	if(d<ldata[i].dist)
+	{
+	  dt=ldata[i].dist;
+	 break;
+	}
+      } 
+  }
+  
+  for(uint j = i;j<ldata.size();j++){
+      if(ldata[j].dist>dt+(dt*0.2))
+      {
+	ctarget.subtarget=inner->transform("world", QVec::vec3(ldata[j].dist *sin(ldata[j].angle),0, ldata[j].dist *cos(ldata[j].angle)), "laser");
+	ctarget.activeSub=true;
+      }
+  }
+}
+
+
+bool SpecificWorker::heLlegado()
+{
+  QVec t = inner->transform("rgbd", ctarget.target, "world");
+  qDebug()<< ctarget.target;
+  float d = t.norm2();
+  qDebug()<< "distancia: "<<d;
+  if ( d < 400 ) 
+    return true;
+  else return false;
+  
+}
+
+
+bool SpecificWorker::hayCamino()
+{
+ 
+  int i;
+  
+  QVec t = inner->transform("rgbd", ctarget.target, "world");
+  float d = t.norm2();
+  float alpha =atan2(t.x(), t.z() );
+  
+  for(i = 0; i<ldata.size(); i++)
+  {
+      if(ldata[i].angle >= alpha)
+      {
+	if( ldata[i].dist < d)
+	{
+	  return false;
+	}
+	else
+	{
+	  qDebug()<<"hay camino";
+	  return true;
+	}
+      } 
+  }
+}
+
+void SpecificWorker::irATarget()
+{
+   
+  qDebug()<<"andar";
+
+    QVec t = inner->transform("rgbd", ctarget.target, "world");
+    float alpha =atan2(t.x(), t.z());
+    float r= 0.3*alpha;
+    float d = t.norm2();
+    if(d>400)d=400;
+    differentialrobot_proxy->setSpeedBase(d,r);
+  
+}
+
+
+
+//////////////////////////////////////////777
+////////////////////////////////////////////
+
 float SpecificWorker::go(const TargetPose &target)
 {
-qDebug()<<"GO";
+ qDebug()<<"GO";
+ ctarget.target = QVec::vec3(target.x, target.y, target.z);
+ ctarget.active = true;
+ state.state = "WORKING";
+ 
 }
 
 NavState SpecificWorker::getState()
 {
-
+  return state;
 }
 
 void SpecificWorker::stop()

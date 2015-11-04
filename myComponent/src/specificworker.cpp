@@ -16,11 +16,6 @@
  *    You should have received a copy of the GNU General Public License
  *    along with RoboComp.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "specificworker.h"
-
-/**
-* \brief Default constructor
-*/
 
 ///*=================================================================================================================================================0
 #include "specificworker.h"
@@ -54,13 +49,21 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 void SpecificWorker::compute( )
 {
    TBaseState bState;  
-   differentialrobot_proxy -> getBaseState(bState);
-   inner-> updateTransformValues("base",bState.x, 0, bState.z,0,bState.alpha,0);
+
+    try
+    {
+      differentialrobot_proxy->getBaseState(bState);
+      inner->updateTransformValues("base", bState.x, 0, bState.z, 0, bState.alpha, 0);	//actualiza los valores del robot en el arbol de memoria
+    }
+    catch(const Ice::Exception e)
+    {
+      std::cout << e << std::endl;
+    }
 
     ldata = laser_proxy->getLaserData();  
    
-    TargetPose t;
-  controller_proxy->go(t);
+  //  TargetPose t;
+ // controller_proxy->go(t);
     
     switch( estado )
     {
@@ -72,14 +75,20 @@ void SpecificWorker::compute( )
 	std::cout << "SEARCH" << std::endl;
 	Buscar(MarkList->initMark);
 	break;
-      case State::MOVE:
+	
+      case State::CONTROLLER:
+	std::cout << "CONTROLLER" << std::endl;
+	controller();
+	break;
+      
+     /* case State::MOVE:
 	  std::cout << "MOVE" << std::endl;
 	  Move();
 	break;
 	  case State::WALL:
 	std::cout << "WALL" << std::endl;
 	  wall();
-	break;
+	break;*/
 	case State::WAIT:
 	std::cout << "WAIT" << std::endl;
 	  wait();
@@ -102,14 +111,12 @@ void SpecificWorker::Buscar(int initMark)
     try
     {
 
-   qDebug() << "hoal";
-
       differentialrobot_proxy->setSpeedBase(0,0);
     }
     catch(const Ice::Exception e){
       std::cout << e << std::endl;
     }
-    estado = State::MOVE;
+    estado = State::CONTROLLER;
     firstTime=true;
     
     return;
@@ -135,10 +142,14 @@ void SpecificWorker::wait()
 {
   static bool primeraVez=true;
   static QTime reloj;
+  int initMark=MarkList->getM();
   if(primeraVez){
     reloj = QTime::currentTime();
     primeraVez=false;
     MarkList->inMemory=false;
+    int newState = (initMark + 1) % 4;
+    MarkList->setM(newState);
+    MarkList->setInMemory(false);
   }
   if(reloj.elapsed() > 5000){
     estado = State::SEARCH;
@@ -179,7 +190,7 @@ void SpecificWorker::Move()
 	//std::cout << "buscando" <<initId<< std::endl;
 	//qFatal("encontrado");
 	
-	MarkList->initMark = (MarkList->initMark + 1) % 4;
+	//MarkList->initMark = (MarkList->initMark + 1) % 4;
 	estado = State::WAIT;
 	return;
       }
@@ -234,6 +245,33 @@ void SpecificWorker::Move()
         
     }
       catch(const Ice::Exception &ex)
+    {
+        std::cout << ex << std::endl;
+    }
+}
+
+
+void SpecificWorker::controller()
+{
+  try
+  {
+    NavState state=controller_proxy->getState();
+    if(state.state == "IDLE")
+    {
+      qDebug()<<"entrando controller";
+      TagList::Mark m= MarkList->get(MarkList->getM());
+      QVec w = inner -> transform("world",QVec::vec3(m.tx,m.ty,m.tz),"rgbd");
+      TargetPose t={w.x(), w.y(), w.z()};
+      controller_proxy->go(t);
+      
+    }
+    else if(state.state == "FINISH")
+    {
+      estado = State::WAIT;
+      return;
+    }
+  }
+  catch(const Ice::Exception &ex)
     {
         std::cout << ex << std::endl;
     }

@@ -25,9 +25,6 @@
 
 
 
-
-
-
 #ifndef SPECIFICWORKER_H
 #define SPECIFICWORKER_H
 
@@ -40,6 +37,13 @@ Q_OBJECT
 public:
 	SpecificWorker(MapPrx& mprx);	
 	~SpecificWorker();
+	
+	typedef struct
+	{
+	  QVec target, subtarget;
+	  bool active=false, activeSub=false;
+	} CurrentTarget;
+	
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
 
 	float go(const TargetPose &target);
@@ -50,8 +54,17 @@ public slots:
 	void compute(); 	
 
 private:
-	
+	NavState state;
+	TBaseState bState;
+	TLaserData ldata;
+	InnerModel* inner;
+	CurrentTarget ctarget;
+	void crearSubTarget();
+	void irASubTarget();
+	bool hayCamino();
+	void irATarget();
+	bool heLlegado();
+
 };
 
 #endif
-
