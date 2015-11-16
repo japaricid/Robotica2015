@@ -40,9 +40,6 @@ SpecificWorker::~SpecificWorker()
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
-
-
-
 	
 	timer.start(Period);
 
@@ -51,21 +48,23 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute()
 {
- 
+
+   
   try
   {
      differentialrobot_proxy->getBaseState(bState);
      ldata = laser_proxy->getLaserData();
-     inner->updateTransformValues("base", bState.x, 0, bState.z, 0, bState.alpha, 0);	//actualiza los valores del robot en el arbol de memoria
+     inner->updateTransformValues("base", bState.x, 0, bState.z, 0, bState.alpha, 0);
      
      if( state.state == "WORKING")
      {
 	if( heLlegado() )
-	{ qDebug()<<"he llegado";
+	{ 
+	  qDebug()<<"he llegado";
 	  differentialrobot_proxy->setSpeedBase(0,0);
 	  state.state = "FINISH";
 	  sleep(2);
-	  state.state ="IDLE";
+	   state.state = "IDLE";
 	  return;
 	}
       
@@ -87,24 +86,36 @@ void SpecificWorker::compute()
   {
     std::cout << "Error reading from Camera" << e << std::endl;
   }
+// 	try
+// 	{
+// 		camera_proxy->getYImage(0,img, cState, bState);
+// 		memcpy(image_gray.data, &img[0], m_width*m_height*sizeof(uchar));
+// 		searchTags(image_gray);
+// 	}
+// 	catch(const Ice::Exception &e)
+// 	{
+// 		std::cout << "Error reading from Camera" << e << std::endl;
+// 	}
 }
 
 void SpecificWorker::irASubTarget()
 {
   qDebug()<<"ir subTarget";  
-    QVec t = inner->transform("rgbd", ctarget.subtarget, "world");
+    QVec t = inner->transform("laser", ctarget.subtarget, "world");
     float alpha =atan2(t.x(), t.z());
-    float r= 0.3*alpha;
+    float r= 0.4*alpha;
     float d = t.norm2();
     if(d<100)
     {
       ctarget.activeSub=false;
       differentialrobot_proxy->setSpeedBase(0,0);
+	  sleep(1);
     }else
     {
       if( fabs(r) > 0.2) d = 0;
       if(d>300)d=300;
-	differentialrobot_proxy->setSpeedBase(d,r);
+	  differentialrobot_proxy->setSpeedBase(d,r);
+       //differentialrobot_proxy->setSpeedBase(0,0);
     }
 }
 
@@ -117,7 +128,8 @@ void SpecificWorker::crearSubTarget()
   QVec t = inner->transform("rgbd", ctarget.target, "world");
   float d = t.norm2();
   float alpha =atan2(t.x(), t.z() );
-  
+
+  /*
   for(i = 5; i<ldata.size()-5; i++)
   {
       if(ldata[i].angle < alpha)
@@ -133,43 +145,69 @@ void SpecificWorker::crearSubTarget()
   
   for(uint j = i;j<ldata.size()-5;j++){
    
-      if(ldata[j].dist>dt+(dt*0.2))
-      {
-	      if(ldata[j].dist> (dt+(dt*0.2)) and ldata[j].angle < 0)
+     
+      if(ldata[j].dist> (dt+(dt*0.2)) and ldata[j].angle < 0)
       {
 	qDebug()<<"creando subTarget";
-	ctarget.subtarget=inner->transform("world", QVec::vec3(ldata[j].dist *sin(ldata[j].angle),0, ldata[j].dist *cos(ldata[j].angle)), "laser");
+	
+	ctarget.subtarget=inner->transform("world", QVec::vec3(ldata[j].dist *sin(ldata[j].angle)-2000,0, ldata[j].dist *cos(ldata[j].angle)), "laser");
 	ctarget.activeSub=true;
 	break;
       }
-      }
+      
+  }*/
+  for(i=5; i<ldata.size()-5;i++)
+  {
+    if(ldata[i-1].dist - ldata[i].dist > 400) 
+    {
+      ctarget.subtarget=inner->transform("world", QVec::vec3(ldata[i].dist *sin(ldata[i].angle),0, ldata[i].dist *cos(ldata[i].angle)), "laser");
+      ctarget.activeSub=true;
+      break;
+    }
+    
+    if(ldata[i+1].dist - ldata[i].dist > 400)
+    {
+     
+      ctarget.subtarget=inner->transform("world", QVec::vec3(ldata[i].dist *sin(ldata[i].angle),0, ldata[i].dist *cos(ldata[i].angle)), "laser");
+      ctarget.activeSub=true;
+      break;   
+    }  
   }
+  qDebug()<<ctarget.subtarget;
+ // differentialrobot_proxy->setSpeedBase(0,0);
+  //exit(-1);
 }
 
 
 bool SpecificWorker::heLlegado()
 {
   QVec t = inner->transform("rgbd", ctarget.target, "world");
-  qDebug()<< ctarget.target;
+ // qDebug()<< ctarget.target;
   float d = t.norm2();
   qDebug()<< "distancia: "<<d;
-  if ( d < 400 ) 
-    return true;
-  else return false;
-  
+  if ( d < 400 )
+  {
+     return true;
+  }else
+  {
+     return false;
+  }
+
 }
 
 
 bool SpecificWorker::hayCamino()
 {
+  
  
   uint i;
   
   QVec t = inner->transform("rgbd", ctarget.target, "world");
-  float d = t.norm2();
   float alpha =atan2(t.x(), t.z() );
-  
-  for(i = 0; i<ldata.size(); i++)
+  float d = t.norm2();
+  float x, z;
+ //int i = 50;
+ for(uint i = 5; i<ldata.size()-5; i++)
   {
       if(ldata[i].angle < alpha)
       {
@@ -183,22 +221,33 @@ bool SpecificWorker::hayCamino()
 	  qDebug()<<"hay camino";
 	  return true;
 	}
-      } 
+      }
   }
+  return false;
 }
 
 void SpecificWorker::irATarget()
 {
    
-  qDebug()<<"andar";
+     qDebug()<<  __FUNCTION__<<"andar"; 
 
     QVec t = inner->transform("rgbd", ctarget.target, "world");
     float alpha =atan2(t.x(), t.z());
     float r= 0.3*alpha;
-    float d =  0.3*t.norm2();
-    if( fabs(r) > 0.2) d = 0;
-    if(d>300)d=300;
-    differentialrobot_proxy->setSpeedBase(d,r);
+    float d = 0.3*t.norm2();
+    
+    if(d<100)
+    {
+        ctarget.activeSub=false;
+        differentialrobot_proxy->setSpeedBase(0,0);
+	sleep(1);
+      
+    }else
+    {
+      if( fabs(r) > 0.2) d = 0;
+      if(d>300)d=300;
+      differentialrobot_proxy->setSpeedBase(d,r);
+    }
   
 }
 
