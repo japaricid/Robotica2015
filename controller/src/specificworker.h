@@ -59,12 +59,16 @@ private:
 	TLaserData ldata;
 	InnerModel* inner;
 	CurrentTarget ctarget;
+	QGraphicsScene scene;
+	
+	
 	void crearSubTarget();
 	void irASubTarget();
 	bool hayCamino();
 	void irATarget();
 	bool heLlegado();
-
+	void pintar();
+	
 };
 
 #endif

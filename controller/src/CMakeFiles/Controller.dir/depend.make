@@ -201,6 +201,7 @@ src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.o: /usr/include/qt4/QtGui/QCle
 src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -637,6 +638,7 @@ src/CMakeFiles/Controller.dir/controllerI.cpp.o: /usr/include/qt4/QtGui/QCleanlo
 src/CMakeFiles/Controller.dir/controllerI.cpp.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/controllerI.cpp.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/controllerI.cpp.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/controllerI.cpp.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/controllerI.cpp.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/controllerI.cpp.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/controllerI.cpp.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -1074,6 +1076,7 @@ src/CMakeFiles/Controller.dir/genericmonitor.cpp.o: /usr/include/qt4/QtGui/QClea
 src/CMakeFiles/Controller.dir/genericmonitor.cpp.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/genericmonitor.cpp.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/genericmonitor.cpp.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/genericmonitor.cpp.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/genericmonitor.cpp.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/genericmonitor.cpp.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/genericmonitor.cpp.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -1509,6 +1512,7 @@ src/CMakeFiles/Controller.dir/genericworker.cpp.o: /usr/include/qt4/QtGui/QClean
 src/CMakeFiles/Controller.dir/genericworker.cpp.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/genericworker.cpp.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/genericworker.cpp.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/genericworker.cpp.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/genericworker.cpp.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/genericworker.cpp.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/genericworker.cpp.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -2314,6 +2318,7 @@ src/CMakeFiles/Controller.dir/main.cpp.o: /usr/include/qt4/QtGui/QCleanlooksStyl
 src/CMakeFiles/Controller.dir/main.cpp.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/main.cpp.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/main.cpp.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/main.cpp.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/main.cpp.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/main.cpp.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/main.cpp.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -2751,6 +2756,7 @@ src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o: /usr/include/qt4/QtGui/
 src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -3187,6 +3193,7 @@ src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o: /usr/include/qt4/QtGui/QCle
 src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -3624,6 +3631,7 @@ src/CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o: /usr/include/qt4/QtGui/Q
 src/CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -4059,6 +4067,7 @@ src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o: /usr/include/qt4/QtGui/QC
 src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -4496,6 +4505,7 @@ src/CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o: /usr/include/qt4/QtGui/
 src/CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -4945,6 +4955,7 @@ src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtGui/Q
 src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -5384,6 +5395,7 @@ src/CMakeFiles/Controller.dir/specificmonitor.cpp.o: /usr/include/qt4/QtGui/QCle
 src/CMakeFiles/Controller.dir/specificmonitor.cpp.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/specificmonitor.cpp.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/specificmonitor.cpp.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/specificmonitor.cpp.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/specificmonitor.cpp.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/specificmonitor.cpp.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/specificmonitor.cpp.o: /usr/include/qt4/QtGui/QMatrix4x4
@@ -5833,6 +5845,7 @@ src/CMakeFiles/Controller.dir/specificworker.cpp.o: /usr/include/qt4/QtGui/QClea
 src/CMakeFiles/Controller.dir/specificworker.cpp.o: /usr/include/qt4/QtGui/QCommonStyle
 src/CMakeFiles/Controller.dir/specificworker.cpp.o: /usr/include/qt4/QtGui/QFileDialog
 src/CMakeFiles/Controller.dir/specificworker.cpp.o: /usr/include/qt4/QtGui/QFont
+src/CMakeFiles/Controller.dir/specificworker.cpp.o: /usr/include/qt4/QtGui/QGraphicsView
 src/CMakeFiles/Controller.dir/specificworker.cpp.o: /usr/include/qt4/QtGui/QHeaderView
 src/CMakeFiles/Controller.dir/specificworker.cpp.o: /usr/include/qt4/QtGui/QLayout
 src/CMakeFiles/Controller.dir/specificworker.cpp.o: /usr/include/qt4/QtGui/QMatrix4x4

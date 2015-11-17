@@ -263,6 +263,7 @@ void SpecificWorker::controller()
       QVec w = inner -> transform("world",QVec::vec3(m.tx,m.ty,m.tz),"rgbd");
       TargetPose t={w.x(), w.y(), w.z()};
       controller_proxy->go(t);
+	 // qFatal("fary");
       
     }
     else if(state.state == "FINISH")

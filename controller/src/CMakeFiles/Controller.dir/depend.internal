@@ -202,6 +202,7 @@ src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -638,6 +639,7 @@ src/CMakeFiles/Controller.dir/controllerI.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -1075,6 +1077,7 @@ src/CMakeFiles/Controller.dir/genericmonitor.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -1510,6 +1513,7 @@ src/CMakeFiles/Controller.dir/genericworker.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -2315,6 +2319,7 @@ src/CMakeFiles/Controller.dir/main.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -2752,6 +2757,7 @@ src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -3188,6 +3194,7 @@ src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -3625,6 +3632,7 @@ src/CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -4060,6 +4068,7 @@ src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -4497,6 +4506,7 @@ src/CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -4946,6 +4956,7 @@ src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -5385,6 +5396,7 @@ src/CMakeFiles/Controller.dir/specificmonitor.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -5834,6 +5846,7 @@ src/CMakeFiles/Controller.dir/specificworker.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QGraphicsView
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
