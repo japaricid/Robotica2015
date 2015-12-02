@@ -1,9 +1,10 @@
+
 CommonBehavior.Endpoints=tcp -p 11050
 
 
 # Endpoints for implemented interfaces
-Controller.Endpoints=tcp -p 10050
 
+TrajectoryRobot2D.Endpoints=tcp -p 10050
 
 # Proxies for required interfaces
 DifferentialRobotProxy = differentialrobot:tcp -h localhost -p 10004
@@ -16,5 +17,3 @@ Ice.Trace.Network=0
 Ice.Trace.Protocol=0
 Ice.ACM.Client=10
 Ice.ACM.Server=10
-
-

@@ -49,6 +49,7 @@ public slots:
 	void wait();
 	void wall();
 	void controller();
+	void crearGrafo();
 
 private:
   
@@ -58,6 +59,7 @@ private:
     State estado = State::INIT;
     TLaserData ldata;
     InnerModel* inner;
+	QVec nodo;
   
     
 };

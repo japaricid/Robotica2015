@@ -171,30 +171,6 @@ CommonBehavior.cpp.s:
 	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/CommonBehavior.cpp.s
 .PHONY : CommonBehavior.cpp.s
 
-Controller.o: Controller.cpp.o
-.PHONY : Controller.o
-
-# target to build an object file
-Controller.cpp.o:
-	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/Controller.cpp.o
-.PHONY : Controller.cpp.o
-
-Controller.i: Controller.cpp.i
-.PHONY : Controller.i
-
-# target to preprocess a source file
-Controller.cpp.i:
-	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/Controller.cpp.i
-.PHONY : Controller.cpp.i
-
-Controller.s: Controller.cpp.s
-.PHONY : Controller.s
-
-# target to generate assembly for a file
-Controller.cpp.s:
-	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/Controller.cpp.s
-.PHONY : Controller.cpp.s
-
 DifferentialRobot.o: DifferentialRobot.cpp.o
 .PHONY : DifferentialRobot.o
 
@@ -243,6 +219,30 @@ Laser.cpp.s:
 	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/Laser.cpp.s
 .PHONY : Laser.cpp.s
 
+TrajectoryRobot2D.o: TrajectoryRobot2D.cpp.o
+.PHONY : TrajectoryRobot2D.o
+
+# target to build an object file
+TrajectoryRobot2D.cpp.o:
+	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o
+.PHONY : TrajectoryRobot2D.cpp.o
+
+TrajectoryRobot2D.i: TrajectoryRobot2D.cpp.i
+.PHONY : TrajectoryRobot2D.i
+
+# target to preprocess a source file
+TrajectoryRobot2D.cpp.i:
+	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.i
+.PHONY : TrajectoryRobot2D.cpp.i
+
+TrajectoryRobot2D.s: TrajectoryRobot2D.cpp.s
+.PHONY : TrajectoryRobot2D.s
+
+# target to generate assembly for a file
+TrajectoryRobot2D.cpp.s:
+	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.s
+.PHONY : TrajectoryRobot2D.cpp.s
+
 commonbehaviorI.o: commonbehaviorI.cpp.o
 .PHONY : commonbehaviorI.o
 
@@ -266,30 +266,6 @@ commonbehaviorI.s: commonbehaviorI.cpp.s
 commonbehaviorI.cpp.s:
 	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.s
 .PHONY : commonbehaviorI.cpp.s
-
-controllerI.o: controllerI.cpp.o
-.PHONY : controllerI.o
-
-# target to build an object file
-controllerI.cpp.o:
-	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/controllerI.cpp.o
-.PHONY : controllerI.cpp.o
-
-controllerI.i: controllerI.cpp.i
-.PHONY : controllerI.i
-
-# target to preprocess a source file
-controllerI.cpp.i:
-	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/controllerI.cpp.i
-.PHONY : controllerI.cpp.i
-
-controllerI.s: controllerI.cpp.s
-.PHONY : controllerI.s
-
-# target to generate assembly for a file
-controllerI.cpp.s:
-	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/controllerI.cpp.s
-.PHONY : controllerI.cpp.s
 
 genericmonitor.o: genericmonitor.cpp.o
 .PHONY : genericmonitor.o
@@ -435,30 +411,6 @@ moc_commonbehaviorI.cxx.s:
 	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.s
 .PHONY : moc_commonbehaviorI.cxx.s
 
-moc_controllerI.o: moc_controllerI.cxx.o
-.PHONY : moc_controllerI.o
-
-# target to build an object file
-moc_controllerI.cxx.o:
-	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o
-.PHONY : moc_controllerI.cxx.o
-
-moc_controllerI.i: moc_controllerI.cxx.i
-.PHONY : moc_controllerI.i
-
-# target to preprocess a source file
-moc_controllerI.cxx.i:
-	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/moc_controllerI.cxx.i
-.PHONY : moc_controllerI.cxx.i
-
-moc_controllerI.s: moc_controllerI.cxx.s
-.PHONY : moc_controllerI.s
-
-# target to generate assembly for a file
-moc_controllerI.cxx.s:
-	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/moc_controllerI.cxx.s
-.PHONY : moc_controllerI.cxx.s
-
 moc_genericmonitor.o: moc_genericmonitor.cxx.o
 .PHONY : moc_genericmonitor.o
 
@@ -555,6 +507,30 @@ moc_specificworker.cxx.s:
 	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/moc_specificworker.cxx.s
 .PHONY : moc_specificworker.cxx.s
 
+moc_trajectoryrobot2dI.o: moc_trajectoryrobot2dI.cxx.o
+.PHONY : moc_trajectoryrobot2dI.o
+
+# target to build an object file
+moc_trajectoryrobot2dI.cxx.o:
+	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o
+.PHONY : moc_trajectoryrobot2dI.cxx.o
+
+moc_trajectoryrobot2dI.i: moc_trajectoryrobot2dI.cxx.i
+.PHONY : moc_trajectoryrobot2dI.i
+
+# target to preprocess a source file
+moc_trajectoryrobot2dI.cxx.i:
+	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.i
+.PHONY : moc_trajectoryrobot2dI.cxx.i
+
+moc_trajectoryrobot2dI.s: moc_trajectoryrobot2dI.cxx.s
+.PHONY : moc_trajectoryrobot2dI.s
+
+# target to generate assembly for a file
+moc_trajectoryrobot2dI.cxx.s:
+	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.s
+.PHONY : moc_trajectoryrobot2dI.cxx.s
+
 specificmonitor.o: specificmonitor.cpp.o
 .PHONY : specificmonitor.o
 
@@ -603,6 +579,30 @@ specificworker.cpp.s:
 	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/specificworker.cpp.s
 .PHONY : specificworker.cpp.s
 
+trajectoryrobot2dI.o: trajectoryrobot2dI.cpp.o
+.PHONY : trajectoryrobot2dI.o
+
+# target to build an object file
+trajectoryrobot2dI.cpp.o:
+	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o
+.PHONY : trajectoryrobot2dI.cpp.o
+
+trajectoryrobot2dI.i: trajectoryrobot2dI.cpp.i
+.PHONY : trajectoryrobot2dI.i
+
+# target to preprocess a source file
+trajectoryrobot2dI.cpp.i:
+	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.i
+.PHONY : trajectoryrobot2dI.cpp.i
+
+trajectoryrobot2dI.s: trajectoryrobot2dI.cpp.s
+.PHONY : trajectoryrobot2dI.s
+
+# target to generate assembly for a file
+trajectoryrobot2dI.cpp.s:
+	cd /home/salabeta/Robotica2015/controller && $(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.s
+.PHONY : trajectoryrobot2dI.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -618,21 +618,18 @@ help:
 	@echo "... CommonBehavior.o"
 	@echo "... CommonBehavior.i"
 	@echo "... CommonBehavior.s"
-	@echo "... Controller.o"
-	@echo "... Controller.i"
-	@echo "... Controller.s"
 	@echo "... DifferentialRobot.o"
 	@echo "... DifferentialRobot.i"
 	@echo "... DifferentialRobot.s"
 	@echo "... Laser.o"
 	@echo "... Laser.i"
 	@echo "... Laser.s"
+	@echo "... TrajectoryRobot2D.o"
+	@echo "... TrajectoryRobot2D.i"
+	@echo "... TrajectoryRobot2D.s"
 	@echo "... commonbehaviorI.o"
 	@echo "... commonbehaviorI.i"
 	@echo "... commonbehaviorI.s"
-	@echo "... controllerI.o"
-	@echo "... controllerI.i"
-	@echo "... controllerI.s"
 	@echo "... genericmonitor.o"
 	@echo "... genericmonitor.i"
 	@echo "... genericmonitor.s"
@@ -651,9 +648,6 @@ help:
 	@echo "... moc_commonbehaviorI.o"
 	@echo "... moc_commonbehaviorI.i"
 	@echo "... moc_commonbehaviorI.s"
-	@echo "... moc_controllerI.o"
-	@echo "... moc_controllerI.i"
-	@echo "... moc_controllerI.s"
 	@echo "... moc_genericmonitor.o"
 	@echo "... moc_genericmonitor.i"
 	@echo "... moc_genericmonitor.s"
@@ -666,12 +660,18 @@ help:
 	@echo "... moc_specificworker.o"
 	@echo "... moc_specificworker.i"
 	@echo "... moc_specificworker.s"
+	@echo "... moc_trajectoryrobot2dI.o"
+	@echo "... moc_trajectoryrobot2dI.i"
+	@echo "... moc_trajectoryrobot2dI.s"
 	@echo "... specificmonitor.o"
 	@echo "... specificmonitor.i"
 	@echo "... specificmonitor.s"
 	@echo "... specificworker.o"
 	@echo "... specificworker.i"
 	@echo "... specificworker.s"
+	@echo "... trajectoryrobot2dI.o"
+	@echo "... trajectoryrobot2dI.i"
+	@echo "... trajectoryrobot2dI.s"
 .PHONY : help
 
 

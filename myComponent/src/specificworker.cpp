@@ -26,7 +26,7 @@
 ///*=========================================================================================
 SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 {
-  inner = new InnerModel ("/home/salabeta/robocomp/files/innermodel/simpleworld.xml");
+  inner = new InnerModel ("/home/salabeta/Robotica2015/RoCKIn@home/world/apartment.xml");
   MarkList = new TagList(inner);
 }
 
@@ -48,24 +48,21 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute( )
 {
-   TBaseState bState;  
+   TBaseState bState;
 
     try
     {
       differentialrobot_proxy->getBaseState(bState);
-      inner->updateTransformValues("base", bState.x, 0, bState.z, 0, bState.alpha, 0);	//actualiza los valores del robot en el arbol de memoria
+      inner->updateTransformValues("robot", bState.x, 0, bState.z, 0, bState.alpha, 0);	//actualiza los valores del robot en el arbol de memoria
     }
     catch(const Ice::Exception e)
     {
       std::cout << e << std::endl;
     }
+  
+    ldata = laser_proxy->getLaserData();  //read laser data 
 
-    ldata = laser_proxy->getLaserData();  
-   
-  //  TargetPose t;
- // controller_proxy->go(t);
-    
-    switch( estado )
+    /*switch( estado )
     {
       case State::INIT:
 	std::cout << "INIT" << std::endl;
@@ -73,30 +70,32 @@ void SpecificWorker::compute( )
 	break;
       case State::SEARCH:
 	std::cout << "SEARCH" << std::endl;
-	Buscar(MarkList->initMark);
+	searchMark(listaMarcas->getInitMark());
 	break;
-	
       case State::CONTROLLER:
 	std::cout << "CONTROLLER" << std::endl;
 	controller();
 	break;
-      
-     /* case State::MOVE:
-	  std::cout << "MOVE" << std::endl;
-	  Move();
-	break;
-	  case State::WALL:
-	std::cout << "WALL" << std::endl;
-	  wall();
-	break;*/
-	case State::WAIT:
+      case State::WAIT:
 	std::cout << "WAIT" << std::endl;
 	  wait();
-	  break;
-      case State::FINISH:	
-	std::cout << "FINISH" << std::endl;
 	break;
-    } 
+      case State::FINISH:
+	std::cout << "FINISH" << std::endl;
+	
+	break;
+    }*/
+    switch( estado )
+    {
+      case State::INIT:
+	std::cout << "INIT" << std::endl;
+	crearGrafo();
+	break;
+      case State::CONTROLLER:
+	std::cout << "CONTROLLER" << std::endl;
+	controller();
+	break;
+    }
     
 }
 
@@ -251,24 +250,50 @@ void SpecificWorker::Move()
 }
 
 
+void SpecificWorker::crearGrafo()
+{
+	const int offset = 20;
+    ldata = laser_proxy->getLaserData();
+    int maxDist = 0;
+    int i, j;
+	//std::sort( ldata.begin()+offset, ldata.end()-offset, [](RoboCompLaser::TData a, RoboCompLaser::TData b){ return     a.dist > b.dist; }) ;
+     
+    for(i =20; i<ldata.size()-20; i++)
+    {
+		if(ldata[i].dist > maxDist)
+		{
+			maxDist = ldata[i].dist-200;
+			j=i;
+		}
+    }
+      nodo=inner->laserTo("world", "laser", maxDist, ldata[j].angle);
+      estado = State::CONTROLLER;
+}
+
 void SpecificWorker::controller()
 {
-  try
+ try
   {
-    NavState state=controller_proxy->getState();
+   // NavState state=controller_proxy->getState();
+	RoboCompTrajectoryRobot2D::NavState state=trajectoryrobot2d_proxy->getState();
+    qDebug()<<"dentro de controller";
+
     if(state.state == "IDLE")
     {
-      qDebug()<<"entrando controller";
-      TagList::Mark m= MarkList->get(MarkList->getM());
-      QVec w = inner -> transform("world",QVec::vec3(m.tx,m.ty,m.tz),"rgbd");
-      TargetPose t={w.x(), w.y(), w.z()};
-      controller_proxy->go(t);
-	 // qFatal("fary");
-      
+	    std::cout << state.state << std::endl;
+
+      //TargetPose t={nodo.x(), nodo.y(), nodo.z()};
+      TargetPose t;
+	  t.x=nodo.x();
+	  t.y=nodo.y();
+	  t.z=nodo.z();
+      qDebug()<<"nodo: "<<nodo;
+      trajectoryrobot2d_proxy->go(t);
     }
     else if(state.state == "FINISH")
     {
-      estado = State::WAIT;
+      //crearGrafo();
+      //estado = State::WAIT;
       return;
     }
   }

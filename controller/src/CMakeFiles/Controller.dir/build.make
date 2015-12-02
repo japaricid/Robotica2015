@@ -56,26 +56,26 @@ src/CommonBehavior.cpp: /opt/robocomp/interfaces/CommonBehavior.ice
 
 src/CommonBehavior.h: src/CommonBehavior.cpp
 
-src/DifferentialRobot.cpp: /opt/robocomp/interfaces/DifferentialRobot.ice
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating DifferentialRobot.cpp and DifferentialRobot.h from DifferentialRobot.ice"
-	cd /home/salabeta/Robotica2015/controller/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/DifferentialRobot.ice --output-dir .
-
-src/DifferentialRobot.h: src/DifferentialRobot.cpp
-
 src/Laser.cpp: /opt/robocomp/interfaces/Laser.ice
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Laser.cpp and Laser.h from Laser.ice"
 	cd /home/salabeta/Robotica2015/controller/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/Laser.ice --output-dir .
 
 src/Laser.h: src/Laser.cpp
 
-src/Controller.cpp: /home/salabeta/robocomp/interfaces/Controller.ice
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_4)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Controller.cpp and Controller.h from Controller.ice"
-	cd /home/salabeta/Robotica2015/controller/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /home/salabeta/robocomp//interfaces//Controller.ice --output-dir .
+src/DifferentialRobot.cpp: /opt/robocomp/interfaces/DifferentialRobot.ice
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating DifferentialRobot.cpp and DifferentialRobot.h from DifferentialRobot.ice"
+	cd /home/salabeta/Robotica2015/controller/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/DifferentialRobot.ice --output-dir .
 
-src/Controller.h: src/Controller.cpp
+src/DifferentialRobot.h: src/DifferentialRobot.cpp
+
+src/TrajectoryRobot2D.cpp: /opt/robocomp/interfaces/TrajectoryRobot2D.ice
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating TrajectoryRobot2D.cpp and TrajectoryRobot2D.h from TrajectoryRobot2D.ice"
+	cd /home/salabeta/Robotica2015/controller/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/TrajectoryRobot2D.ice --output-dir .
+
+src/TrajectoryRobot2D.h: src/TrajectoryRobot2D.cpp
 
 src/moc_specificworker.cxx: src/specificworker.h
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_5)
@@ -102,10 +102,10 @@ src/moc_genericworker.cxx: src/genericworker.h
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating moc_genericworker.cxx"
 	cd /home/salabeta/Robotica2015/controller/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/salabeta/Robotica2015/controller/src/moc_genericworker.cxx_parameters
 
-src/moc_controllerI.cxx: src/controllerI.h
+src/moc_trajectoryrobot2dI.cxx: src/trajectoryrobot2dI.h
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_10)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating moc_controllerI.cxx"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/salabeta/Robotica2015/controller/src/moc_controllerI.cxx_parameters
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating moc_trajectoryrobot2dI.cxx"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/salabeta/Robotica2015/controller/src/moc_trajectoryrobot2dI.cxx_parameters
 
 src/ui_mainUI.h: src/mainUI.ui
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_11)
@@ -296,28 +296,28 @@ src/CMakeFiles/Controller.dir/genericworker.cpp.o.provides: src/CMakeFiles/Contr
 
 src/CMakeFiles/Controller.dir/genericworker.cpp.o.provides.build: src/CMakeFiles/Controller.dir/genericworker.cpp.o
 
-src/CMakeFiles/Controller.dir/controllerI.cpp.o: src/CMakeFiles/Controller.dir/flags.make
-src/CMakeFiles/Controller.dir/controllerI.cpp.o: src/controllerI.cpp
+src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o: src/CMakeFiles/Controller.dir/flags.make
+src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o: src/trajectoryrobot2dI.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_20)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/Controller.dir/controllerI.cpp.o"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/controllerI.cpp.o -c /home/salabeta/Robotica2015/controller/src/controllerI.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o -c /home/salabeta/Robotica2015/controller/src/trajectoryrobot2dI.cpp
 
-src/CMakeFiles/Controller.dir/controllerI.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Controller.dir/controllerI.cpp.i"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/Robotica2015/controller/src/controllerI.cpp > CMakeFiles/Controller.dir/controllerI.cpp.i
+src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.i"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/Robotica2015/controller/src/trajectoryrobot2dI.cpp > CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.i
 
-src/CMakeFiles/Controller.dir/controllerI.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Controller.dir/controllerI.cpp.s"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/Robotica2015/controller/src/controllerI.cpp -o CMakeFiles/Controller.dir/controllerI.cpp.s
+src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.s"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/Robotica2015/controller/src/trajectoryrobot2dI.cpp -o CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.s
 
-src/CMakeFiles/Controller.dir/controllerI.cpp.o.requires:
-.PHONY : src/CMakeFiles/Controller.dir/controllerI.cpp.o.requires
+src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o.requires:
+.PHONY : src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o.requires
 
-src/CMakeFiles/Controller.dir/controllerI.cpp.o.provides: src/CMakeFiles/Controller.dir/controllerI.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/controllerI.cpp.o.provides.build
-.PHONY : src/CMakeFiles/Controller.dir/controllerI.cpp.o.provides
+src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o.provides: src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o.provides.build
+.PHONY : src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o.provides
 
-src/CMakeFiles/Controller.dir/controllerI.cpp.o.provides.build: src/CMakeFiles/Controller.dir/controllerI.cpp.o
+src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o.provides.build: src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o
 
 src/CMakeFiles/Controller.dir/CommonBehavior.cpp.o: src/CMakeFiles/Controller.dir/flags.make
 src/CMakeFiles/Controller.dir/CommonBehavior.cpp.o: src/CommonBehavior.cpp
@@ -342,32 +342,9 @@ src/CMakeFiles/Controller.dir/CommonBehavior.cpp.o.provides: src/CMakeFiles/Cont
 
 src/CMakeFiles/Controller.dir/CommonBehavior.cpp.o.provides.build: src/CMakeFiles/Controller.dir/CommonBehavior.cpp.o
 
-src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o: src/CMakeFiles/Controller.dir/flags.make
-src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o: src/DifferentialRobot.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_22)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/DifferentialRobot.cpp.o -c /home/salabeta/Robotica2015/controller/src/DifferentialRobot.cpp
-
-src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Controller.dir/DifferentialRobot.cpp.i"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/Robotica2015/controller/src/DifferentialRobot.cpp > CMakeFiles/Controller.dir/DifferentialRobot.cpp.i
-
-src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Controller.dir/DifferentialRobot.cpp.s"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/Robotica2015/controller/src/DifferentialRobot.cpp -o CMakeFiles/Controller.dir/DifferentialRobot.cpp.s
-
-src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.requires:
-.PHONY : src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.requires
-
-src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.provides: src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.provides.build
-.PHONY : src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.provides
-
-src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.provides.build: src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o
-
 src/CMakeFiles/Controller.dir/Laser.cpp.o: src/CMakeFiles/Controller.dir/flags.make
 src/CMakeFiles/Controller.dir/Laser.cpp.o: src/Laser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_23)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_22)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/Controller.dir/Laser.cpp.o"
 	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/Laser.cpp.o -c /home/salabeta/Robotica2015/controller/src/Laser.cpp
 
@@ -388,28 +365,51 @@ src/CMakeFiles/Controller.dir/Laser.cpp.o.provides: src/CMakeFiles/Controller.di
 
 src/CMakeFiles/Controller.dir/Laser.cpp.o.provides.build: src/CMakeFiles/Controller.dir/Laser.cpp.o
 
-src/CMakeFiles/Controller.dir/Controller.cpp.o: src/CMakeFiles/Controller.dir/flags.make
-src/CMakeFiles/Controller.dir/Controller.cpp.o: src/Controller.cpp
+src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o: src/CMakeFiles/Controller.dir/flags.make
+src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o: src/DifferentialRobot.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_23)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/DifferentialRobot.cpp.o -c /home/salabeta/Robotica2015/controller/src/DifferentialRobot.cpp
+
+src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Controller.dir/DifferentialRobot.cpp.i"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/Robotica2015/controller/src/DifferentialRobot.cpp > CMakeFiles/Controller.dir/DifferentialRobot.cpp.i
+
+src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Controller.dir/DifferentialRobot.cpp.s"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/Robotica2015/controller/src/DifferentialRobot.cpp -o CMakeFiles/Controller.dir/DifferentialRobot.cpp.s
+
+src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.requires:
+.PHONY : src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.requires
+
+src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.provides: src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.provides.build
+.PHONY : src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.provides
+
+src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.provides.build: src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o
+
+src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o: src/CMakeFiles/Controller.dir/flags.make
+src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o: src/TrajectoryRobot2D.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_24)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/Controller.dir/Controller.cpp.o"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/Controller.cpp.o -c /home/salabeta/Robotica2015/controller/src/Controller.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o -c /home/salabeta/Robotica2015/controller/src/TrajectoryRobot2D.cpp
 
-src/CMakeFiles/Controller.dir/Controller.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Controller.dir/Controller.cpp.i"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/Robotica2015/controller/src/Controller.cpp > CMakeFiles/Controller.dir/Controller.cpp.i
+src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.i"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/Robotica2015/controller/src/TrajectoryRobot2D.cpp > CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.i
 
-src/CMakeFiles/Controller.dir/Controller.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Controller.dir/Controller.cpp.s"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/Robotica2015/controller/src/Controller.cpp -o CMakeFiles/Controller.dir/Controller.cpp.s
+src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.s"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/Robotica2015/controller/src/TrajectoryRobot2D.cpp -o CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.s
 
-src/CMakeFiles/Controller.dir/Controller.cpp.o.requires:
-.PHONY : src/CMakeFiles/Controller.dir/Controller.cpp.o.requires
+src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o.requires:
+.PHONY : src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o.requires
 
-src/CMakeFiles/Controller.dir/Controller.cpp.o.provides: src/CMakeFiles/Controller.dir/Controller.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/Controller.cpp.o.provides.build
-.PHONY : src/CMakeFiles/Controller.dir/Controller.cpp.o.provides
+src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o.provides: src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o.provides.build
+.PHONY : src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o.provides
 
-src/CMakeFiles/Controller.dir/Controller.cpp.o.provides.build: src/CMakeFiles/Controller.dir/Controller.cpp.o
+src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o.provides.build: src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o
 
 src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o: src/CMakeFiles/Controller.dir/flags.make
 src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o: src/moc_specificworker.cxx
@@ -526,28 +526,28 @@ src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o.provides: src/CMakeFiles/C
 
 src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o.provides.build: src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o
 
-src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o: src/CMakeFiles/Controller.dir/flags.make
-src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o: src/moc_controllerI.cxx
+src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o: src/CMakeFiles/Controller.dir/flags.make
+src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o: src/moc_trajectoryrobot2dI.cxx
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/Robotica2015/controller/CMakeFiles $(CMAKE_PROGRESS_30)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/moc_controllerI.cxx.o -c /home/salabeta/Robotica2015/controller/src/moc_controllerI.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o -c /home/salabeta/Robotica2015/controller/src/moc_trajectoryrobot2dI.cxx
 
-src/CMakeFiles/Controller.dir/moc_controllerI.cxx.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Controller.dir/moc_controllerI.cxx.i"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/Robotica2015/controller/src/moc_controllerI.cxx > CMakeFiles/Controller.dir/moc_controllerI.cxx.i
+src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.i"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/Robotica2015/controller/src/moc_trajectoryrobot2dI.cxx > CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.i
 
-src/CMakeFiles/Controller.dir/moc_controllerI.cxx.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Controller.dir/moc_controllerI.cxx.s"
-	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/Robotica2015/controller/src/moc_controllerI.cxx -o CMakeFiles/Controller.dir/moc_controllerI.cxx.s
+src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.s"
+	cd /home/salabeta/Robotica2015/controller/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/Robotica2015/controller/src/moc_trajectoryrobot2dI.cxx -o CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.s
 
-src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o.requires:
-.PHONY : src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o.requires
+src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o.requires:
+.PHONY : src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o.requires
 
-src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o.provides: src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o.requires
-	$(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o.provides.build
-.PHONY : src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o.provides
+src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o.provides: src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o.requires
+	$(MAKE) -f src/CMakeFiles/Controller.dir/build.make src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o.provides.build
+.PHONY : src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o.provides
 
-src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o.provides.build: src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o
+src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o.provides.build: src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o
 
 # Object files for target Controller
 Controller_OBJECTS = \
@@ -559,17 +559,17 @@ Controller_OBJECTS = \
 "CMakeFiles/Controller.dir/genericmonitor.cpp.o" \
 "CMakeFiles/Controller.dir/commonbehaviorI.cpp.o" \
 "CMakeFiles/Controller.dir/genericworker.cpp.o" \
-"CMakeFiles/Controller.dir/controllerI.cpp.o" \
+"CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o" \
 "CMakeFiles/Controller.dir/CommonBehavior.cpp.o" \
-"CMakeFiles/Controller.dir/DifferentialRobot.cpp.o" \
 "CMakeFiles/Controller.dir/Laser.cpp.o" \
-"CMakeFiles/Controller.dir/Controller.cpp.o" \
+"CMakeFiles/Controller.dir/DifferentialRobot.cpp.o" \
+"CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o" \
 "CMakeFiles/Controller.dir/moc_specificworker.cxx.o" \
 "CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o" \
 "CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o" \
 "CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o" \
 "CMakeFiles/Controller.dir/moc_genericworker.cxx.o" \
-"CMakeFiles/Controller.dir/moc_controllerI.cxx.o"
+"CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o"
 
 # External object files for target Controller
 Controller_EXTERNAL_OBJECTS =
@@ -582,17 +582,17 @@ bin/Controller: src/CMakeFiles/Controller.dir/main.cpp.o
 bin/Controller: src/CMakeFiles/Controller.dir/genericmonitor.cpp.o
 bin/Controller: src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.o
 bin/Controller: src/CMakeFiles/Controller.dir/genericworker.cpp.o
-bin/Controller: src/CMakeFiles/Controller.dir/controllerI.cpp.o
+bin/Controller: src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o
 bin/Controller: src/CMakeFiles/Controller.dir/CommonBehavior.cpp.o
-bin/Controller: src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o
 bin/Controller: src/CMakeFiles/Controller.dir/Laser.cpp.o
-bin/Controller: src/CMakeFiles/Controller.dir/Controller.cpp.o
+bin/Controller: src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o
+bin/Controller: src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o
 bin/Controller: src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o
 bin/Controller: src/CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o
 bin/Controller: src/CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o
 bin/Controller: src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o
 bin/Controller: src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o
-bin/Controller: src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o
+bin/Controller: src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o
 bin/Controller: src/CMakeFiles/Controller.dir/build.make
 bin/Controller: /usr/lib/x86_64-linux-gnu/libQtOpenGL.so
 bin/Controller: /usr/lib/x86_64-linux-gnu/libQtGui.so
@@ -618,17 +618,17 @@ src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/main.cpp.o
 src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/genericmonitor.cpp.o.requires
 src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/commonbehaviorI.cpp.o.requires
 src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/genericworker.cpp.o.requires
-src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/controllerI.cpp.o.requires
+src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/trajectoryrobot2dI.cpp.o.requires
 src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/CommonBehavior.cpp.o.requires
-src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.requires
 src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/Laser.cpp.o.requires
-src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/Controller.cpp.o.requires
+src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/DifferentialRobot.cpp.o.requires
+src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/TrajectoryRobot2D.cpp.o.requires
 src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/moc_specificworker.cxx.o.requires
 src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/moc_specificmonitor.cxx.o.requires
 src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/moc_genericmonitor.cxx.o.requires
 src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/moc_commonbehaviorI.cxx.o.requires
 src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/moc_genericworker.cxx.o.requires
-src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/moc_controllerI.cxx.o.requires
+src/CMakeFiles/Controller.dir/requires: src/CMakeFiles/Controller.dir/moc_trajectoryrobot2dI.cxx.o.requires
 .PHONY : src/CMakeFiles/Controller.dir/requires
 
 src/CMakeFiles/Controller.dir/clean:
@@ -637,18 +637,18 @@ src/CMakeFiles/Controller.dir/clean:
 
 src/CMakeFiles/Controller.dir/depend: src/CommonBehavior.cpp
 src/CMakeFiles/Controller.dir/depend: src/CommonBehavior.h
-src/CMakeFiles/Controller.dir/depend: src/DifferentialRobot.cpp
-src/CMakeFiles/Controller.dir/depend: src/DifferentialRobot.h
 src/CMakeFiles/Controller.dir/depend: src/Laser.cpp
 src/CMakeFiles/Controller.dir/depend: src/Laser.h
-src/CMakeFiles/Controller.dir/depend: src/Controller.cpp
-src/CMakeFiles/Controller.dir/depend: src/Controller.h
+src/CMakeFiles/Controller.dir/depend: src/DifferentialRobot.cpp
+src/CMakeFiles/Controller.dir/depend: src/DifferentialRobot.h
+src/CMakeFiles/Controller.dir/depend: src/TrajectoryRobot2D.cpp
+src/CMakeFiles/Controller.dir/depend: src/TrajectoryRobot2D.h
 src/CMakeFiles/Controller.dir/depend: src/moc_specificworker.cxx
 src/CMakeFiles/Controller.dir/depend: src/moc_specificmonitor.cxx
 src/CMakeFiles/Controller.dir/depend: src/moc_genericmonitor.cxx
 src/CMakeFiles/Controller.dir/depend: src/moc_commonbehaviorI.cxx
 src/CMakeFiles/Controller.dir/depend: src/moc_genericworker.cxx
-src/CMakeFiles/Controller.dir/depend: src/moc_controllerI.cxx
+src/CMakeFiles/Controller.dir/depend: src/moc_trajectoryrobot2dI.cxx
 src/CMakeFiles/Controller.dir/depend: src/ui_mainUI.h
 	cd /home/salabeta/Robotica2015/controller && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/salabeta/Robotica2015/controller /home/salabeta/Robotica2015/controller/src /home/salabeta/Robotica2015/controller /home/salabeta/Robotica2015/controller/src /home/salabeta/Robotica2015/controller/src/CMakeFiles/Controller.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/Controller.dir/depend
